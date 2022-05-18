@@ -1,13 +1,7 @@
-function greetSomeone(firstName) {
-  let time = 'night';
-  if(time === 'night') {
-    let greeting = 'Good Night';
-  }
+let aElement = document.createElement('a')
+aElement.setAttribute('id', 'javascript')
+aElement.textContent = 'awesome'
 
-  return greeting + ' ' + firstName;
-}
+console.log(aElement);
 
-greetSomeone('sangbin');
-
-
-
+document.getElementById('world').appendChild(aElement);
