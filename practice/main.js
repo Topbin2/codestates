@@ -1,7 +1,38 @@
-let aElement = document.createElement('a')
-aElement.setAttribute('id', 'javascript')
-aElement.textContent = 'awesome'
+class UserStorage {
+  loginUser(id, password, onSuccess, onError) {
+    setTimeout(() => {
+      if (
+        (id === "ellie" && password === "dream") ||
+        (id === "coder" && password === "academy")
+      ) {
+        onSuccess(id);
+      } else {
+        onError(new Error("not found"));
+      }
+    }, 2000);
+  }
 
-console.log(aElement);
+  getRoles(user, onSuccess, onError) {
+    setTimeout(() => {
+      if (user === "ellie") {
+        onSuccess({ name: "ellie", role: "admin" });
+      } else {
+        onError(new Error("no access"));
+      }
+    }, 1000);
+  }
+}
 
-document.getElementById('world').appendChild(aElement);
+const userStorage = new UserStorage();
+
+const id = "coder";
+const password = "academy";
+
+userStorage.loginUser(
+  id,
+  password,
+  (user) => {
+    userStorage.getRoles(user, (obj) => console.log(obj), (error) => console.log(error));
+  },
+  (error) => console.log(error)
+);
